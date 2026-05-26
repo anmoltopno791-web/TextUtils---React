@@ -5,6 +5,7 @@ export default function TextForm(props) {
     // console.log("Uppercase was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase!", "success");
   };
 
   const handleOnChange = (event) => {
@@ -15,26 +16,31 @@ export default function TextForm(props) {
   const handleLowClick = () => {
     let lowerText = text.toLowerCase();
     setText(lowerText);
+    props.showAlert("Converted to lowercase!", "success");
   };
 
   const handleClearClick = () => {
     let clear = "";
     setText(clear);
+    props.showAlert("Text cleared!", "success");
   };
 
   const handleCaptalizeClick = () => {
     let captialize = text.charAt(0).toUpperCase() + text.slice(1);
     setText(captialize);
+    props.showAlert("Text capitalized!", "success");
   }
 
   const handleCopyClick = () => {
     let copyText = text
     navigator.clipboard.writeText(copyText)
+    props.showAlert("Text copied to clipboard!", "success");
   }
 
   const handleExtraSpacesClick = () => {
     let removeSpace = text.split(/[ ]+/)
     setText(removeSpace.join(""))
+    props.showAlert("Extra spaces removed!", "success");
   }
 
   const handleReplaceClick = () => {
@@ -42,11 +48,13 @@ export default function TextForm(props) {
     let replacementWord = prompt("Enter the replacement word");
     let newText = text.replaceAll(wordToReplace, replacementWord);
     setText(newText);
+    props.showAlert("Text replaced!", "success");
   }
 
   const handleTrimClick = () => {
     let trimmedText = text.trim();
     setText(trimmedText);
+    props.showAlert("Text trimmed!", "success");
   }
 
   const [text, setText] = useState("");
