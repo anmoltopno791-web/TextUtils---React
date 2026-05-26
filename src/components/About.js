@@ -8,10 +8,11 @@ export default function About() {
   const [btntext, setBtnText] = useState("Enable Light Mode");
 
     const toggleStyle = () => {
-    if (myStyle.color == "white") {
+    if (myStyle.color === "white") {
       setMyStyle({
         color: "black",
         backgroundColour: "white",
+        border: "1px solid white"
       });
       setBtnText("Enable Dark Mode");
     } else {
@@ -24,7 +25,7 @@ export default function About() {
   };
   return (
     <div className="container my-3" style={myStyle}>
-      <h1 className="container my-3">About Us</h1>
+      <h1>About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
           <h2 className="accordion-header">
