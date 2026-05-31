@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 
 export default function Navbar(props) {
   return (
@@ -93,6 +93,18 @@ export default function Navbar(props) {
               />
               <label className="form-check-label" htmlFor="switchCheckDefault">
                 Enable DarkMode
+              </label>
+            </div>
+            <div className={`form-check form-switch text-${props.mode==="light"?"dark":"light"} mx-4`}>
+              <input
+                className="form-check-input"
+                onClick={props.toggleRedMode}
+                type="checkbox"
+                role="switch"
+                id="switchCheckDefault"
+              />
+              <label className="form-check-label" htmlFor="switchCheckDefault">
+                Enable Red DarkMode
               </label>
             </div>
           </div>

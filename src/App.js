@@ -1,13 +1,14 @@
-import logo from "./logo.svg";
+
 import "./App.css";
 import Navbar from "./components/Navbar";
-import TextForm from "./components/TextForm";
+// import TextForm from "./components/TextForm";
 import About from "./components/About";
 import React, { useState } from "react";
 import Alert from "./components/Alert";
 
 function App() {
   const [mode, setMode] = useState("light");
+  const [redMode, setRedMode] = useState("light");
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
@@ -19,7 +20,17 @@ function App() {
       setAlert(null);
     }, 1500);
   };
-
+  const toggleRedMode = () => {
+    if (redMode === "light") {
+      setRedMode("dark");
+      document.body.style.backgroundColor = "#f40d0d";
+      showAlert("Red Dark mode has been enabled", "success");
+    } else {
+      setRedMode("light");
+      document.body.style.backgroundColor = "white";
+      showAlert("Light mode has been enabled", "success");
+    }
+  };
   const toggleMode = () => {
     if (mode === "light") {
       setMode("dark");
@@ -33,16 +44,16 @@ function App() {
   };
   return (
     <>
-      <Navbar mode={mode} toggleMode={toggleMode} />
+      <Navbar mode={mode} toggleMode={toggleMode} redMode={redMode} toggleRedMode={toggleRedMode} />
       <Alert alert={alert} />
-      <div className="container my-4">
+      {/* <div className="container my-4">
         <TextForm
           showAlert={showAlert}
           heading="Enter the text to analyse below"
           mode={mode}
         />
-      </div>
-      {/* <About/> */}
+      </div> */}
+      <About/>
     </>
   );
 }
